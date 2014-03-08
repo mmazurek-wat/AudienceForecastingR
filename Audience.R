@@ -1,6 +1,7 @@
 library(timeDate)
 library(chron)
 library(data.table)
+library(forecast)
 
 
 #calendard table   
@@ -17,7 +18,7 @@ load("calendar1.dat")  #ctim, cal
 # Audience ----------------------------------------------------------------
 
 
-aud.src<-read.csv2("D:/Pentacomp/ATMedia/ForecastR/SourceData/Actuals_CHAN5_TAGR2.csv", header=TRUE, sep=";", dec=",")
+aud.src<-read.csv2("D:/Pentacomp/ATMedia/AudienceForecastingR/SourceData/Actuals_CHAN5_TAGR2.csv", header=TRUE, sep=";", dec=",")
 names(aud.src)[1]<-"AUDI_Start_Date"       
 
 a<-data.table(aud.src)
@@ -47,7 +48,7 @@ aud<-atim[,list(GRP=mean(GRP)),by="date"]
 
 # Reference  ----------------------------------------------------------------
 
-ref.src<-read.csv2("D:/Pentacomp/ATMedia/ForecastR/SourceData/Forecast_Chan5_Tagr2_2013.csv", header=TRUE, sep=";", dec=",")
+ref.src<-read.csv2("D:/Pentacomp/ATMedia/AudienceForecastingR/SourceData/Forecast_Chan5_Tagr2_2013.csv", header=TRUE, sep=";", dec=",")
 names(ref.src)<-c("date", "startSecond", "endSecond", "GRP.Forecast")
 
 
@@ -68,11 +69,6 @@ rtim[GRP.Forecast==0.000001, "GRP.Forecast"]<-0
 
 
 ref<- rtim[,list(GRP.Forecast=mean(GRP.Forecast)),by="date"]
-save(reference.DT, reference.daily, file=("reference.dat"))
-
-
-
-
 
 save(aud, ref, atim, rtim ,  file="audience.dat")
 

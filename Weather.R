@@ -8,10 +8,10 @@ load("calendar1.dat")
 
 
 ##wczytanie danych szczegolowych 
-weather.src<-read.csv2("D:/Pentacomp/ATMedia/ForecastR/SourceData/weather.csv", header=TRUE, sep=",")
+weather.src<-read.csv2("D:/Pentacomp/ATMedia/AudienceForecastingR/SourceData/weather.csv", header=TRUE, sep=",")
 wt<-data.table(weather.src)
 
-wcount<-wt[, .N, by=year]
+
 wcount<-wt[, .N, by=weather]
 wcount$weather<- reorder(wcount$weather, -wcount$N)
 

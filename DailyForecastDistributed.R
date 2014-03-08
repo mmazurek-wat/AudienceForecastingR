@@ -31,12 +31,9 @@ aud.tst<-subset(aud,  date>='2013-01-01') #ciag testowy
 
 
 
-# weekly charts -----------------------------------------------------------
-
+#dane testowe 
 actuals.weekly<-aud.tst[cal][year==2013,list(Actuals=mean(GRP)),by="weekno"]
 ref.weekly<-ref[cal][year==2013,list(Forecast=mean(GRP.Forecast)),by="weekno"]
-
-
 
 
 
