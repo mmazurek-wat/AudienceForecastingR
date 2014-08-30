@@ -2,6 +2,7 @@ library(data.table)
 library (plyr)
 library(ggplot2)
 
+##zmiana w pliku 20140831
 
 ##cal 
 load("calendar1.dat")
